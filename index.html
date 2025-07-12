@@ -1,238 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domestic Help Connect</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background: #4CAF50;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: space-around;
-            background: #333;
-            padding: 0.5rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-        }
-        nav a:hover {
-            background: #4CAF50;
-        }
-        .container {
-            padding: 1rem;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .hero {
-            background: #f4f4f4;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .btn {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 0.5rem;
-        }
-        .btn:hover {
-            background: #45a049;
-        }
-        .job-list, .worker-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        .job-card, .worker-card {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            border-radius: 5px;
-        }
-        .job-card h3, .worker-card h3 {
-            margin-top: 0;
-            color: #4CAF50;
-        }
-        .hidden {
-            display: none;
-        }
-        form {
-            max-width: 500px;
-            margin: auto;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        form div {
-            margin-bottom: 1rem;
-        }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 0.5rem;
-        }
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-    p {
-      background-color: lightblue; 
-      color: darkblue;             
-      padding: 10px;               
+  <meta charset="UTF-8">
+  <title>Welcome | Domestic Help Connect</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    </style>
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay {
+      background: rgba(0, 123, 255, 0.5); /* Light blue overlay */
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out;
+      padding: 20px;
+    }
+
+    .logo {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      animation: scaleIn 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #ffeb3b; /* Bright yellow heading */
+    }
+
+    p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #e0f7fa; /* Soft cyan paragraph */
+      line-height: 1.6;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    a.button {
+      padding: 14px 32px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #1e7e34;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <marquee><h1>Domestic Help Connect</h1></marquee>
-        <p marquee behavior="animate"><font color="#FF5733">connecting house helpers with employers</font>
-    </header>
-    
-    <nav>
-        <a href="#" onclick="showSection('home')">Home</a>
-        <a href="#" onclick="showSection('jobs')">Find Jobs</a>
-       
-        <a href="https://forms.gle/umbbY5ky47oX2h5T8" onclick="showSection('post-job')"> post a job[Employer]</a>
-        <a href="https://forms.gle/kEKZmZLgdkugomKj8" onclick="showSection('register')">Register as house helper</a>
-    </nav>
-     <h2>Our Mission</h2>
-  <p>
-          
-    Our mission is to transform lives by bridging the gap between dedicated domestic helpers and respectful, trustworthy employers.
-    We are committed to creating a platform where safety, fairness, and opportunity thrive — ensuring every home is supported, and every helper is valued with dignity and respect.
-  </p>
-    <div class="container">
-        <!-- Home Section -->
-        <section id="home">
-            <div class="hero">
-                <h2><font color="#3380FF">Find Domestic Help or Employment</font></h2>
-                <p>We connect qualified house helpers with employers looking for domestic assistance</p>
-                <a href="#" class="btn" onclick="showSection('register')">Register as Helper</a>
-                <a href="https://forms.gle/umbbY5ky47oX2h5T8" class="btn" onclick="showSection('post-job')">Employer job posting</a>
-            </div>
-            
-         <div class="contact-info">
-                <h4>Other Ways to Reach Us</h4>
-                <p><i class="fas fa-phone"></i> +254 (741278248)</p>
-                <p><i class="fab fa-whatsapp"></i> WhatsApp: +254 (741278248)</p>
-            </div>
-        </div>
-    </section>
 
-        <!-- Jobs Section -->
-        <section id="jobs" class="hidden">
-            <h2>Available Jobs</h2>
-            <div class="job-list">
-                <!-- Jobs will be listed here -->
-          <h2>Housekeeping Positions</h2>
-    <ul>
-        <li>Full-time Housekeeper</li>
-        <li>Part-time Cleaner</li>
-        <li>Live-in Maid</li>
-        <li>Daily Cleaning Helper</li>
-        <li>Deep Cleaning Specialist</li>
-    </ul>
-    
-    <h2>Childcare Positions</h2>
-    <ul>
-        <li>Full-time Nanny</li>
-        <li>After-school Babysitter</li>
-        <li>Newborn Care Specialist</li>
-        <li>Weekend Childminder</li>
-        <li>Tutor/Nanny Combination</li>
-    </ul>
-    
-    <h2>Elderly Care Positions</h2>
-    <ul>
-        <li>Companion Caregiver</li>
-        <li>Live-in Elderly Care Assistant</li>
-        <li>Medical Care Assistant</li>
-        <li>Part-time Senior Helper</li>
-        <li>Dementia Care Specialist</li>
-    </ul>
-    
-    <h2>Other Domestic Positions</h2>
-    <ul>
-        <li>Family Cook</li>
-        <li>Laundry Specialist</li>
-        <li>Gardener/Housekeeper</li>
-        <li>Driver/Household Helper</li>
-        <li>All-around Household Assistant</li>
-    </ul>
+  <!-- Background video -->
+  <video autoplay muted loop class="background-video">
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Blue overlay -->
+  <div class="overlay"></div>
+
+  <!-- Content area -->
+  <div class="content">
+<img src="domestic help connect logo.jpg" alt=" connect.jpg" width="150" height="150">
+    <h1>Welcome to Domestic Help Connect</h1>
     <p>
-        <marquee behavior="alternate" scrollamount="2" width="300">
-            <font color="#FF0000">We appreciate your application! We'll contact you soon.</font>
-        </marquee>
+      We are glad to have you here. Whether you're looking for trustworthy help or offering your skills with dignity,
+      you're in the right place. Let's build honest connections and caring homes together.
     </p>
-    <p>Contact us at: +254(741278248)</p>
-       <!-- Post Job Section -->
-<section id="post-job">
-  <h2>Employer Job posting</h2>
-  <a href="https://forms.gle/umbbY5ky47oX2h5T8"></a>
+    <a href="index.html" class="button">Get Started</a>
   </div>
-  </section>    
-    <!-- ===== Contact Section ===== -->
-            <div class="register as job seeker-form">
-                <h4>Send Us Your Request</h4>
-                <p>Please click below to register</p>
-                <a href="https://forms.gle/kEKZmZLgdkugomKj8" class="order-btn">register</a>
-            </div>
-</section>
-    
-    <script>
-        // Simple show/hide section functionality
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            
-            // Show the selected section
-            document.getElementById(sectionId).classList.remove('hidden');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-        
-        // Toggle helper fields based on user type selection
-        document.getElementById('employer').addEventListener('change', function() {
-            document.getElementById('helper-fields').style.display = 'none';
-        });
-        
-        document.getElementById('helper').addEventListener('change', function() {
-            document.getElementById('helper-fields').style.display = 'block';
-        });
-        
-        document.getElementById('register-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-    
-            showSection('home');
-        });
-    </script>
+
 </body>
 </html>
