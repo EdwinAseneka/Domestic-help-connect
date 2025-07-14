@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Email Login | Domestic Help Connect</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #28a745;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .logout {
+      margin-top: 20px;
+      background-color: #dc3545;
+    }
+
+    .logout:hover {
+      background-color: #c82333;
+    }
+
+    .dashboard {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Box -->
+  <div class="container" id="loginBox">
+    <h2>Login with Email</h2>
+    <input type="email" id="email" placeholder="Enter your email" required />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="container dashboard" id="dashboardBox">
+    <h2>Welcome</h2>
+    <p>You are logged in as: <strong><span id="userEmail"></span></strong></p>
+    <a href="index.html" target="_blank">
+      <button>confirm</button>
+    </a>
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById("email").value.trim();
+      if (!email || !email.includes("@")) {
+        alert("Please enter a valid email.");
+        return;
+      }
+
+      localStorage.setItem("userEmail", email);
+      showDashboard();
+    }
+
+    function showDashboard() {
+      const email = localStorage.getItem("userEmail");
+      if (!email) return;
+
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("dashboardBox").style.display = "block";
+      document.getElementById("userEmail").textContent = email;
+    }
+
+    function logout() {
+      localStorage.removeItem("userEmail");
+      location.reload();
+    }
+
+    // Auto-login if already logged in
+    if (localStorage.getItem("userEmail")) {
+      showDashboard();
+    }
+  </script>
+
+</body>
+</html>
