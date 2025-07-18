@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Domestic Help Connect - Jobs</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+    }
+
+    nav {
+      background: linear-gradient(to right, #ec4899, #f97316); /* Vibrant pink-orange */
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: opacity 0.3s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Jobs Section Styling with vibrant background and hover */
+    #jobs {
+      background: linear-gradient(to right, #fef9c3, #d1fae5); /* Soft yellow-green gradient */
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #jobs:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    #jobs h2 {
+      text-align: center;
+      color: #111827;
+      font-size: 34px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #jobs h3 {
+      margin-top: 30px;
+      color: #be123c;
+      font-size: 22px;
+      border-left: 5px solid #be123c;
+      padding-left: 12px;
+    }
+
+    #jobs ul {
+      margin: 15px 0 25px 30px;
+    }
+
+    #jobs ul li {
+      line-height: 1.8;
+      list-style: disc;
+      color: #1f2937;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    #jobs ul li:hover {
+      color: #d97706;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background: linear-gradient(to right, #ec4899, #f97316); /* Match nav */
+      color: white;
+      padding: 25px;
+      text-align: center;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#jobs">Jobs</a>
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="container">
+    <!-- Jobs Section -->
+    <section id="jobs">
+      <h2 class="section-title">Available Jobs</h2>
+
+      <h3>🏠 Housekeeping Positions</h3>
+      <ul>
+        <li>Full-time Housekeeper</li>
+        <li>Part-time Cleaner</li>
+        <li>Live-in Maid</li>
+        <li>Daily Cleaning Helper</li>
+        <li>Deep Cleaning Specialist</li>
+      </ul>
+
+      <h3>👶 Childcare Positions</h3>
+      <ul>
+        <li>Full-time Nanny</li>
+        <li>After-school Babysitter</li>
+        <li>Newborn Care Specialist</li>
+        <li>Weekend Childminder</li>
+        <li>Tutor/Nanny Combination</li>
+      </ul>
+
+      <h3>👵 Elderly Care Positions</h3>
+      <ul>
+        <li>Companion Caregiver</li>
+        <li>Live-in Elderly Care Assistant</li>
+        <li>Medical Care Assistant</li>
+        <li>Part-time Senior Helper</li>
+        <li>Dementia Care Specialist</li>
+      </ul>
+
+      <h3>🧹 Other Domestic Positions</h3>
+      <ul>
+        <li>Family Cook</li>
+        <li>Laundry Specialist</li>
+        <li>Gardener/Housekeeper</li>
+        <li>Driver/Household Helper</li>
+        <li>All-around Household Assistant</li>
+      </ul>
+
+      <h3>🧼 More Domestic Work Opportunities</h3>
+      <ul>
+        <li>Window Cleaning Expert</li>
+        <li>Pet Care Assistant</li>
+        <li>Household Shopper</li>
+        <li>Errands and Delivery Support</li>
+        <li>Home Security Guard</li>
+        <li>Ironing and Folding Expert</li>
+        <li>Pantry Organizer</li>
+        <li>Home Event Cleaner</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Domestic Help Connect. All rights reserved.
+  </footer>
+
+  <!-- Smooth Scroll JavaScript -->
+  <script>
+    document.querySelector('a[href="#jobs"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById("jobs").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+</body>
+</html>
