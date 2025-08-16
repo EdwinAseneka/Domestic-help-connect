@@ -1,170 +1,514 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domestic Help Connect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            background-color: #f5f7fa;
         }
         header {
-            background: #4CAF50;
+            background: linear-gradient(135deg, rgba(30, 107, 58, 0.85), rgba(44, 138, 90, 0.85));
             color: white;
-            padding: 1rem;
+            padding: 2rem 1.5rem;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1582738412120-8f5a0a1e07c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.5;
+            z-index: 0;
+        }
+        header h1, header p, .header-marquee {
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+        }
+        .header-marquee {
+            background: rgba(0,0,0,0.25);
+            padding: 0.7rem;
+            border-radius: 8px;
+            margin-top: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .header-marquee marquee {
+            color: #fff;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
         }
         nav {
             display: flex;
             justify-content: space-around;
-            background: #333;
-            padding: 0.5rem;
+            background: linear-gradient(90deg, #1a3a5a, #2c5a8a);
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         nav a {
             color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         nav a:hover {
-            background: #4CAF50;
+            background: #2c8a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .container {
-            padding: 1rem;
+            padding: 2rem;
             max-width: 1200px;
             margin: auto;
         }
         .hero {
-            background: #f4f4f4;
-            padding: 2rem;
+            background: linear-gradient(rgba(245, 247, 250, 0.75), rgba(245, 247, 250, 0.75)), 
+                        url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            padding: 4rem 2rem;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: #2d3748;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.1);
         }
         .btn {
             display: inline-block;
-            background: #4CAF50;
+            background: linear-gradient(135deg, #2c8a5a, #1e6b3a);
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.9rem 2rem;
             text-decoration: none;
-            border-radius: 5px;
-            margin: 0.5rem;
+            border-radius: 50px;
+            margin: 0.8rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
         }
         .btn:hover {
-            background: #45a049;
+            background: linear-gradient(135deg, #1e6b3a, #13492a);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .job-list, .worker-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
         .job-card, .worker-card {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+            padding: 1.8rem;
+            border-radius: 12px;
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .job-card:hover, .worker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: #c6f6d5;
         }
         .job-card h3, .worker-card h3 {
             margin-top: 0;
-            color: #4CAF50;
+            color: #2c8a5a;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
         }
         .hidden {
             display: none;
         }
         form {
-            max-width: 500px;
-            margin: auto;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         form div {
-            margin-bottom: 1rem;
+            margin-bottom: 1.8rem;
         }
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: #4a5568;
         }
         input, select, textarea {
             width: 100%;
-            padding: 0.5rem;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #48bb78;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.2);
+            background-color: white;
         }
         footer {
-            background: #333;
+            background: linear-gradient(90deg, #1a3a5a, #2c5a8a);
             color: white;
             text-align: center;
-            padding: 1rem;
-            margin-top: 1rem;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
         }
-    p {
-      background-color: lightblue; 
-      color: darkblue;             
-      padding: 10px;               
-    }
+        .mission-section {
+            background: linear-gradient(rgba(245, 247, 250, 0.75), rgba(245, 247, 250, 0.75)), 
+                        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            padding: 4rem 3rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            color: #2d3748;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .mission-section h2 {
+            color: #2c8a5a;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+        }
+        .mission-section p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: #4a5568;
+        }
+        .contact-info {
+            background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .contact-info h4 {
+            color: #2c8a5a;
+            margin-bottom: 1.8rem;
+            font-size: 1.6rem;
+        }
+        .contact-info p {
+            margin: 1.2rem 0;
+            font-size: 1.15rem;
+            color: #4a5568;
+        }
+        .contact-info i {
+            margin-right: 12px;
+            color: #2c8a5a;
+            font-size: 1.3rem;
+        }
+        .marquee-container {
+            background: linear-gradient(90deg, #dd6b20, #c05621);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .marquee-container marquee {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .feature-boxes {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+            gap: 2rem;
+        }
+        .feature-box {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #c6f6d5;
+        }
+        .feature-box i {
+            font-size: 2.8rem;
+            color: #2c8a5a;
+            margin-bottom: 1.5rem;
+        }
+        .feature-box h3 {
+            color: #2c8a5a;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+        }
+        .feature-box p {
+            color: #4a5568;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .testimonials {
+            background: linear-gradient(rgba(245, 247, 250, 0.75), rgba(245, 247, 250, 0.75)), 
+                        url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            padding: 4rem 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .testimonial-card::before {
+            content: """;
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            color: #2c8a5a;
+            opacity: 0.15;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        .testimonial-card p:first-child {
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-card p strong {
+            color: #2c8a5a;
+            font-size: 1.1rem;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 2rem 1.5rem;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2c8a5a;
+            margin-bottom: 0.8rem;
+        }
+        .stat-label {
+            color: #4a5568;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .feature-boxes {
+                flex-direction: column;
+            }
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+            .mission-section, .testimonials {
+                padding: 3rem 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <marquee><h1>Domestic Help Connect</h1></marquee>
-        <p marquee behavior="animate"><font color="#FF5733">connecting house helpers with employers</font>
+        <h1><i class="fas fa-hands-helping"></i> Domestic Help Connect</h1>
+        <p>Bridging the gap between domestic helpers and employers</p>
+        <div class="header-marquee">
+            <marquee behavior="scroll" direction="left">
+                🏆 Trusted by 500+ families & helpers • ⚡ Quick matching • 🔒 Verified profiles • 💰 Fair wages guaranteed • 🤝 Safe working environment
+            </marquee>
+        </div>
     </header>
     
     <nav>
-        <p class="large-text" style="font-weight: bold;"></p>
-        <a href="index.html" onclick="showSection('home')">Home</a>
-        <a href="index2.html" onclick="showSection('jobs')">Find Jobs</a>
-       
-        <a href="https://forms.gle/umbbY5ky47oX2h5T8" onclick="showSection('post-job')"> Post a Job (Employer)</a>
-        <a href="https://forms.gle/kEKZmZLgdkugomKj8" onclick="showSection('register')">Register As House Helper</a>
+        <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a>
+        <a href="#" onclick="showSection('jobs')"><i class="fas fa-search"></i> Find Jobs</a>
+        <a href="https://forms.gle/umbbY5ky47oX2h5T8"><i class="fas fa-briefcase"></i> Post a Job</a>
+        <a href="https://forms.gle/kEKZmZLgdkugomKj8"><i class="fas fa-user-plus"></i> Register As Helper</a>
     </nav>
-     <h2>Our Mission</h2>
-  <p>
-       <p style="color:#FF5733;">   
-    Our mission is to transform lives by bridging the gap between dedicated domestic helpers and respectful, trustworthy employers.
-    We are committed to creating a platform where safety, fairness, and opportunity thrive — ensuring every home is supported, and every helper is valued with dignity and respect.
-  </p>
+
     <div class="container">
         <!-- Home Section -->
         <section id="home">
             <div class="hero">
-                <h2><font color="#3380FF">Find Domestic Help or Employment</font></h2>
-                <p>We connect qualified house helpers with employers looking for domestic assistance</p>
-                <p style="font-weight: bold;">
-                <a href="#" class="btn" onclick="showSection('register')">Register as Helper</a>
-                <a href="https://forms.gle/umbbY5ky47oX2h5T8" class="btn" onclick="showSection('post-job')">Employer job posting</a>
+                <h2>Find Domestic Help or Employment</h2>
+                <p style="font-size: 1.25rem; margin-bottom: 2.5rem;">Connecting qualified domestic helpers with employers through a trusted platform</p>
+                <div>
+                    <a href="https://forms.gle/kEKZmZLgdkugomKj8" class="btn"><i class="fas fa-user-plus"></i> Register as Helper</a>
+                    <a href="https://forms.gle/umbbY5ky47oX2h5T8" class="btn"><i class="fas fa-briefcase"></i> Post a Job</a>
+                </div>
             </div>
             
-         <div class="contact-info">
-                <h4>Other Ways to Reach Us</h4>
-                <p><i class="fas fa-phone"></i> +254 (741278248)</p>
-                <p><i class="fab fa-whatsapp"></i> WhatsApp: +254 (741278248)</p>
+            <div class="feature-boxes">
+                <div class="feature-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Verified Helpers</h3>
+                    <p>All our helpers undergo thorough background checks and verification processes to ensure your safety and peace of mind.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Trusted Employers</h3>
+                    <p>We carefully screen employers to guarantee fair treatment, proper working conditions, and timely payments.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-clock"></i>
+                    <h3>Quick Matching</h3>
+                    <p>Our efficient matching system connects you with the perfect candidate or employer within days, not weeks.</p>
+                </div>
             </div>
+            
+            <div class="mission-section">
+                <h2>Our Mission</h2>
+                <p>
+                    At Domestic Help Connect, we're revolutionizing the domestic employment sector by creating meaningful connections 
+                    between dedicated helpers and respectful employers. Our platform prioritizes safety, fairness, and mutual respect, 
+                    ensuring every match benefits both parties equally. We believe in transforming domestic work into dignified, 
+                    rewarding employment opportunities.
+                </p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Verified Helpers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">Satisfied Families</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+            
+            <div class="testimonials">
+                <h2 style="text-align: center; color: #2c8a5a; margin-bottom: 2.5rem; font-size: 2rem;">What People Say About Us</h2>
+                <div class="job-list">
+                    <div class="testimonial-card">
+                        <p>"After struggling to find reliable help for years, Domestic Help Connect matched me with Jane, who has been incredible. She's professional, trustworthy, and has become like family. The verification process gave me peace of mind from day one."</p>
+                        <p><strong>- Sarah K., Employer for 3 years</strong></p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"This platform changed my life! I found a wonderful family that treats me with respect, pays fairly, and values my work. The team helped negotiate fair terms and ensured all agreements were clear from the beginning."</p>
+                        <p><strong>- Mary W., Domestic Helper for 2 years</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-phone"></i> +254 741 278 248</p>
+                <p><i class="fab fa-whatsapp"></i> WhatsApp: +254 741 278 248</p>
+                <p><i class="fas fa-envelope"></i> Email: info@domestichelpconnect.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+            </div>
+            
+            <div class="marquee-container">
+                <marquee behavior="scroll" direction="left">
+                    🔔 New jobs posted daily! • ✅ All helpers ID verified • ⏳ Quick response guaranteed • 💼 Employers screened for fairness • 📝 Register today to start your journey
+                </marquee>
+            </div>
+        </section>
+        
+        <!-- Post Job Section -->
+        <section id="post-job" class="hidden">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="color: #2c8a5a; font-size: 2rem;">Employer Job Posting</h2>
+                <p style="font-size: 1.1rem;">Fill out our simple form to post your domestic help job opportunity</p>
+                <a href="https://forms.gle/umbbY5ky47oX2h5T8" class="btn" style="margin-top: 1.5rem;">
+                    <i class="fas fa-pencil-alt"></i> Go to Job Post Form
+                </a>
+            </div>
+            
+            <div style="background: #f0fdf4; padding: 2.5rem; border-radius: 12px; margin-top: 2rem; border: 1px solid #dcfce7;">
+                <h3 style="color: #2c8a5a; text-align: center; font-size: 1.6rem; margin-bottom: 1.5rem;">Why Post With Us?</h3>
+                <ul style="max-width: 650px; margin: 0 auto; line-height: 1.9; font-size: 1.1rem; color: #4a5568;">
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: #2c8a5a; margin-right: 10px;"></i> Access to hundreds of pre-screened, qualified domestic helpers with verified references</li>
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: #2c8a5a; margin-right: 10px;"></i> No placement fees - connect directly with candidates</li>
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: #2c8a5a; margin-right: 10px;"></i> Detailed profiles with work history, skills, and availability</li>
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: #2c8a5a; margin-right: 10px;"></i> Optional background checks and skill verification available</li>
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: #2c8a5a; margin-right: 10px;"></i> Most jobs receive multiple applications within 24 hours</li>
+                    <li><i class="fas fa-check-circle" style="color: #2c8a5a; margin-right: 10px;"></i> Dedicated support to help you find the perfect match</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem;">
+                <a href="#" style="color: white; font-size: 1.8rem; transition: all 0.3s ease;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color: white; font-size: 1.8rem; transition: all 0.3s ease;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: white; font-size: 1.8rem; transition: all 0.3s ease;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: white; font-size: 1.8rem; transition: all 0.3s ease;"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p style="font-size: 1.1rem;">&copy; 2023 Domestic Help Connect. All rights reserved.</p>
+            <p style="margin-top: 1rem; font-size: 1rem;">
+                <a href="#" style="color: #a3e635; text-decoration: none; transition: all 0.3s ease;">Privacy Policy</a> | 
+                <a href="#" style="color: #a3e635; text-decoration: none; transition: all 0.3s ease;">Terms of Service</a> |
+                <a href="#" style="color: #a3e635; text-decoration: none; transition: all 0.3s ease;">About Us</a> |
+                <a href="#" style="color: #a3e635; text-decoration: none; transition: all 0.3s ease;">Contact</a>
+            </p>
         </div>
-    </section>
-
-    <p>
-        <marquee behavior="alternate" scrollamount="2" width="300">
-            <font color="#FF0000">We appreciate your application! We'll contact you soon.</font>
-        </marquee>
-    </p>
-    <p>Contact us at: +254(741278248)</p>
-       <!-- Post Job Section -->
-<section id="post-job">
-  <h2>Employer Job posting</h2>
-  <a href="https://forms.gle/umbbY5ky47oX2h5T8"></a>
-  </div>
-  </section>    
-    <!-- ===== Contact Section ===== -->
-            <div class="register as job seeker-form">
-                <h4>Send Us Your Request</h4>
-                <p>Please click below to register</p>
-                <a href="https://forms.gle/kEKZmZLgdkugomKj8" class="order-btn">register</a>
-            </div>
-</section>
+    </footer>
     
     <script>
         // Simple show/hide section functionality
@@ -181,21 +525,16 @@
             window.scrollTo(0, 0);
         }
         
-        // Toggle helper fields based on user type selection
-        document.getElementById('employer').addEventListener('change', function() {
-            document.getElementById('helper-fields').style.display = 'none';
-        });
-        
-        document.getElementById('helper').addEventListener('change', function() {
-            document.getElementById('helper-fields').style.display = 'block';
-        });
-        
-        document.getElementById('register-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-    
-            showSection('home');
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
 </html>
-
