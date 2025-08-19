@@ -3,11 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeHelper - Trusted Domestic Services</title>
+    <title>HomeHelper - Trusted Domestic Services | Cleaners, Cooks, Nannies</title>
+    <meta name="description" content="HomeHelper provides reliable domestic services including house cleaning, cooking, babysitting, and drivers. Book verified professionals with satisfaction guaranteed.">
+    <meta name="keywords" content="domestic help, house cleaning, cooks, nannies, babysitting, drivers, home services">
+    <meta name="author" content="HomeHelper">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.homehelper.example/">
+    <meta property="og:title" content="HomeHelper - Trusted Domestic Services">
+    <meta property="og:description" content="Book verified cleaners, cooks, nannies, and more with just a few clicks. Satisfaction guaranteed!">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.homehelper.example/">
+    <meta property="twitter:title" content="HomeHelper - Trusted Domestic Services">
+    <meta property="twitter:description" content="Book verified cleaners, cooks, nannies, and more with just a few clicks. Satisfaction guaranteed!">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.homehelper.example/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=2R8nMbfI-Q2mjmGSML5rgUiuy7101R4TdGbqq4VpgjDuKMofN-_5pFixwHecgiLU8dhfUvbk2mx_HRU7CR0kxqC2bBvtJ4npsS7-Sgu697E" charset="UTF-8"></script>
+    
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "HomeHelper",
+      "description": "Reliable domestic help services including house cleaning, cooking, babysitting, and drivers.",
+      "url": "https://www.homehelper.example",
+      "telephone": "+1-800-123-4567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Service Street",
+        "addressLocality": "Your City",
+        "addressRegion": "Your State",
+        "postalCode": "12345",
+        "addressCountry": "US"
+      },
+      "serviceType": "Domestic services",
+      "areaServed": "United States",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Domestic Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "House Cleaning"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cooking"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Babysitting"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Drivers"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
     <style>
         /* Global Styles */
         :root {
@@ -29,6 +112,7 @@
             background: #fff;
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -39,6 +123,7 @@
 
         section {
             padding: 80px 0;
+            position: relative;
         }
 
         h2 {
@@ -64,6 +149,34 @@
             background: var(--secondary);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animated Background Elements */
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+            }
         }
 
         /* Header */
@@ -145,6 +258,7 @@
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 span {
@@ -155,6 +269,22 @@
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
             opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .btn {
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Services Section */
@@ -176,7 +306,17 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
             transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
         }
+
+        .service-card.animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.4s; }
+        .service-card:nth-child(4) { animation-delay: 0.6s; }
 
         .service-card:hover {
             transform: translateY(-10px);
@@ -225,7 +365,16 @@
             position: relative;
             flex: 1;
             min-width: 250px;
+            opacity: 0;
+            transform: translateY(20px);
         }
+
+        .step.animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.4s; }
 
         .step-number {
             width: 50px;
@@ -462,6 +611,8 @@
     </style>
 </head>
 <body>
+    <!-- Animated Background Elements -->
+    <div class="background-elements" id="background-elements"></div>
  
     <!-- Header -->
     <header>
@@ -474,7 +625,6 @@
                     <li><a href="#how-it-works">How It Works</a></li>
                 </ul>
                 <a href="index1.html" class="btn">Book Now</a>
-                 
             </nav>
         </div>
     </header>
@@ -554,8 +704,6 @@
         </div>
     </section>
 
-   
-
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
@@ -573,16 +721,130 @@
                     <h3>Home<span>Helper</span></h3>
                     <p>Making your life easier with reliable domestic help services.</p>
                     <div class="social-icons">
-                        
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#how-it-works"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> House Cleaning</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cooking</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Babysitting</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Drivers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Service Street, Your City</li>
+                        <li><i class="fas fa-phone"></i> +254741278248</li>
+                        <li><i class="fas fa-envelope"></i> info@homehelper.example</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 HomeHelper. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/+254741278248" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
+        // Create animated background elements
+        function createBackgroundElements() {
+            const container = document.getElementById('background-elements');
+            const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#6B48FF'];
+            const count = 15;
+            
+            for (let i = 0; i < count; i++) {
+                const element = document.createElement('div');
+                element.classList.add('element');
+                
+                // Random properties
+                const size = Math.random() * 100 + 20;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Apply styles
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.background = color;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100 + 100}%`;
+                element.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(element);
+            }
+        }
+        
+        // Intersection Observer for scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('service-card')) {
+                            entry.target.classList.add('animate');
+                        } else if (entry.target.classList.contains('step')) {
+                            entry.target.classList.add('animate');
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Observe steps
+            document.querySelectorAll('.step').forEach(step => {
+                observer.observe(step);
+            });
+        }
+        
         // Simple JavaScript for testimonial slider
         let currentTestimonial = 0;
         const testimonials = [
-           
-            
+            {
+                img: 'https://randomuser.me/api/portraits/women/32.jpg',
+                quote: 'HomeHelper has been a lifesaver for our busy family. The cleaners are always thorough and professional.',
+                stars: '★★★★★',
+                name: 'Sarah Johnson'
+            },
+            {
+                img: 'https://randomuser.me/api/portraits/men/22.jpg',
+                quote: 'I\'ve been using their cooking service for months now. Delicious meals and saves me so much time!',
+                stars: '★★★★☆',
+                name: 'Michael Chen'
+            },
+            {
+                img: 'https://randomuser.me/api/portraits/women/65.jpg',
+                quote: 'Their babysitters are amazing with kids. I can go to work knowing my children are in good hands.',
+                stars: '★★★★★',
+                name: 'Emma Rodriguez'
+            }
         ];
 
         function changeTestimonial() {
@@ -594,19 +856,32 @@
             document.querySelector('.testimonial h4').textContent = testimonial.name;
         }
 
-        // Change testimonial every 5 seconds
-        setInterval(changeTestimonial, 5000);
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createBackgroundElements();
+            initScrollAnimations();
+            
+            // Change testimonial every 5 seconds if testimonials exist
+            if (testimonials.length > 0) {
+                setInterval(changeTestimonial, 5000);
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         });
     </script>
 </body>
 </html>
-
