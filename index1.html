@@ -456,37 +456,67 @@
             <div class="contact-info">
                 <h4>Contact Us</h4>
                 <p><i class="fas fa-phone"></i> +254 741 278 248</p>
-               .whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 24px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    z-index: 1000;
-    animation: colorChange 3s infinite;
-    transition: transform 0.3s ease;
-}
+               <style>
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: colorPulse 3s infinite;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
 
-.whatsapp-float:hover {
-    transform: scale(1.1);
-}
+        .whatsapp-float i {
+            transition: color 0.3s ease;
+        }
 
-/* Keyframes for background color animation */
-@keyframes colorChange {
-    0%   { background-color: #25D366; }
-    25%  { background-color: #128C7E; }
-    50%  { background-color: #075E54; }
-    75%  { background-color: #34B7F1; }
-    100% { background-color: #25D366; }
-}
- <!-- WhatsApp Float -->
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes colorPulse {
+            0% {
+                background-color: #25D366;
+                color: white;
+            }
+            25% {
+                background-color: #128C7E;
+                color: #e0f7fa;
+            }
+            50% {
+                background-color: #075E54;
+                color: #b2ebf2;
+            }
+            75% {
+                background-color: #34B7F1;
+                color: #ffffff;
+            }
+            100% {
+                background-color: #25D366;
+                color: white;
+            }
+        }
+    </style>
+<body>
+
+    <!-- WhatsApp Float -->
     <a href="https://wa.me/+254741278248" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+</body>
                 <p><i class="fas fa-envelope"></i> Email: info@domestichelpconnect.com</p>
                 <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
             </div>
@@ -568,6 +598,7 @@
     </script>
 </body>
 </html>
+
 
 
 
