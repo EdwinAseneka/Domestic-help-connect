@@ -475,30 +475,7 @@
                 <i class="fas fa-house-user"></i>
                 <h2>Service Request Form</h2>
             </div>
-             <!-- Image Upload Section -->
-            <div class="upload-section" id="uploadSection">
-                <h3>Upload Your Profile Photo</h3>
-                <p class="upload-text">Add a professional photo to increase your chances of being hired</p>
-                
-                <img id="imagePreview" class="upload-preview" alt="Profile preview">
-                
-                <input type="file" id="imageUpload" accept="image/jpeg, image/png, image/jpg" style="display: none;">
-                <label for="imageUpload" class="upload-btn">
-                    <i class="fas fa-cloud-upload-alt"></i> Choose Photo
-                </label>
-                
-                <p class="upload-requirements">Accepted formats: JPG, PNG. Maximum size: 2MB. Recommended: Square image, 200x200 pixels.</p>
-                
-                <div class="upload-error" id="uploadError"></div>
-                
-                <div class="upload-actions">
-                    <button onclick="captureFromCamera()" class="btn-sm"><i class="fas fa-camera"></i> Take Photo</button>
-                    <button onclick="removeImage()" class="btn-sm btn-danger" id="removeImageBtn" style="display: none;">
-                        <i class="fas fa-trash"></i> Remove Photo
-                    </button>
-                </div>
-            </div>
-            
+           
             <form id="dataForm">
                 <div class="form-group">
                     <label for="name">Full Name <span class="required">*</span></label>
@@ -1301,3 +1278,4 @@
 </body>
 
 </html>
+
