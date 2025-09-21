@@ -227,14 +227,54 @@
             align-items: center;
         }
 
+        /* Logo Styles */
         .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), #ff8e8e);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+        }
+        
+        .logo-text {
             font-size: 22px;
             font-weight: 700;
             color: var(--primary);
         }
-
-        .logo span {
+        
+        .logo-text span {
             color: var(--secondary);
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            font-size: 16px;
         }
 
         .nav-links {
@@ -732,6 +772,60 @@
             text-decoration: underline;
             cursor: pointer;
         }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite, colorChange 5s infinite linear;
+            transition: transform 0.3s;
+            z-index: 9999;
+        }
+
+        /* Icon inside */
+        .whatsapp-float i {
+            color: #fff;
+            animation: spin 6s linear infinite;
+        }
+
+        /* Scale on hover */
+        .whatsapp-float:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Glowing pulse effect */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px #25d366; }
+            50% { box-shadow: 0 0 30px #25d366, 0 0 50px yellow; }
+            100% { box-shadow: 0 0 10px #25d366; }
+        }
+
+        /* Smooth background color cycle */
+        @keyframes colorChange {
+            0%   { background: #25d366; }
+            25%  { background: #ff4081; }
+            50%  { background: #ff9800; }
+            75%  { background: #2196f3; }
+            100% { background: #25d366; }
+        }
+
+        /* Slow icon spin */
+        @keyframes spin {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
         /* Responsive Design */
         @media (min-width: 480px) {
@@ -816,6 +910,18 @@
                 flex-direction: row;
             }
         }
+        
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 18px;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -845,7 +951,12 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo.jpg">Home<span>Helper</span></div>
+                <a href="#" class="logo">
+                    <div class="logo.jpg">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="logo-text">Home<span>Helper</span></div>
+                </a>
                 <div class="menu-toggle" id="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -1031,7 +1142,12 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>Home<span>Helper</span></h3>
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Home<span>Helper</span></h3>
+                    </div>
                     <p>Making your life easier with reliable domestic help services.</p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/share/1AxSYqTgnU/"><i class="fab fa-facebook-f"></i></a>
@@ -1079,62 +1195,6 @@
 <a href="https://wa.me/254741278248" class="whatsapp-float conversion-trigger" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
-
-<style>
-/* WhatsApp Floating Button */
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    right: 20px;
-    background: #25d366;
-    color: #fff;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: pulse 2s infinite, colorChange 5s infinite linear;
-    transition: transform 0.3s;
-    z-index: 9999;
-}
-
-/* Icon inside */
-.whatsapp-float i {
-    color: #fff;
-    animation: spin 6s linear infinite;
-}
-
-/* Scale on hover */
-.whatsapp-float:hover {
-    transform: scale(1.2) rotate(10deg);
-}
-
-/* Glowing pulse effect */
-@keyframes pulse {
-    0% { box-shadow: 0 0 10px #25d366; }
-    50% { box-shadow: 0 0 30px #25d366, 0 0 50px yellow; }
-    100% { box-shadow: 0 0 10px #25d366; }
-}
-
-/* Smooth background color cycle */
-@keyframes colorChange {
-    0%   { background: #25d366; }
-    25%  { background: #ff4081; }
-    50%  { background: #ff9800; }
-    75%  { background: #2196f3; }
-    100% { background: #25d366; }
-}
-
-/* Slow icon spin */
-@keyframes spin {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-</style>
 
     <script>
         // Mobile menu functionality
@@ -1245,9 +1305,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
