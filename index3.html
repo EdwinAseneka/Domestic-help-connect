@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -394,6 +394,69 @@
             color: #e4edf5;
         }
         
+        .qualifications-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f9fbfd 0%, #e8f4fc 100%);
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .qualifications-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .qualification-entry {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e4edf5;
+        }
+        
+        .qualification-entry input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #e4edf5;
+            border-radius: 6px;
+        }
+        
+        .remove-qualification {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            width: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-qualification:hover {
+            background: #c0392b;
+        }
+        
+        .add-qualification {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .add-qualification:hover {
+            background: #27ae60;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -428,6 +491,10 @@
             
             .search-box button {
                 border-radius: 8px;
+            }
+            
+            .qualification-entry {
+                flex-direction: column;
             }
         }
         
@@ -528,7 +595,7 @@
                 
                 <div class="form-group">
                     <label for="experience">Experience (Years)</label>
-                    <input type="number or text" id="experience" name="experience" min="0" max="50">
+                    <input type="number" id="experience" name="experience" min="0" max="50">
                 </div>
                 
                 <div class="form-group">
@@ -545,7 +612,23 @@
                         <option value="weekends">Weekends Only</option>
                         <option value="as-needed">As Needed</option>
                     </select>
-                </div> 
+                </div>
+                
+                <!-- Qualifications Section -->
+                <div class="qualifications-section">
+                    <div class="qualifications-header">
+                        <h3><i class="fas fa-graduation-cap"></i> Qualifications & Certifications</h3>
+                        <button type="button" class="add-qualification" onclick="addQualification()">
+                            <i class="fas fa-plus"></i> Add Certificate
+                        </button>
+                    </div>
+                    <p>Add any relevant certificates or qualifications (optional)</p>
+                    
+                    <div id="qualifications-container">
+                        <!-- Qualification entries will be added here -->
+                    </div>
+                </div>
+                
                 <button type="submit"><i class="fas fa-paper-plane"></i> Submit Request</button>
             </form>
             
@@ -602,8 +685,8 @@
                 <div class="filter-container">
                     <select id="serviceFilter" onchange="filterSubmissions()">
                         <option value="">All Services</option>
-                        <option value="cleaning">Cleaning</option>
-                        <option value="cooking">Cooking</option>
+                        <option value="maid">Live in Maid</option>
+                        <option value="home guard">Home guard</option>
                         <option value="childcare">Childcare</option>
                         <option value="eldercare">Elderly Care</option>
                         <option value="gardening">Gardening</option>
@@ -910,6 +993,44 @@
             }
         }
         
+        // Add qualification field
+        function addQualification() {
+            const container = document.getElementById('qualifications-container');
+            const entry = document.createElement('div');
+            entry.className = 'qualification-entry';
+            entry.innerHTML = `
+                <input type="text" placeholder="Certificate or qualification name" class="qualification-name">
+                <input type="text" placeholder="Issuing organization" class="qualification-org">
+                <input type="number" placeholder="Year obtained" class="qualification-year" min="1950" max="2030">
+                <button type="button" class="remove-qualification" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            container.appendChild(entry);
+        }
+        
+        // Get all qualifications
+        function getQualifications() {
+            const entries = document.querySelectorAll('.qualification-entry');
+            const qualifications = [];
+            
+            entries.forEach(entry => {
+                const name = entry.querySelector('.qualification-name').value.trim();
+                const org = entry.querySelector('.qualification-org').value.trim();
+                const year = entry.querySelector('.qualification-year').value.trim();
+                
+                if (name || org || year) {
+                    qualifications.push({
+                        name: name || 'Not specified',
+                        organization: org || 'Not specified',
+                        year: year || 'Not specified'
+                    });
+                }
+            });
+            
+            return qualifications;
+        }
+        
         // Form validation and submission
         document.getElementById('dataForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -922,7 +1043,6 @@
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
-            const feedback = document.getElementById('feedback').value.trim();
             const service = document.getElementById('service').value;
             
             if (!name) {
@@ -945,11 +1065,6 @@
                 isValid = false;
             }
             
-            if (!feedback) {
-                document.getElementById('feedbackError').style.display = 'block';
-                isValid = false;
-            }
-            
             if (!isValid) return;
             
             // Get form values
@@ -958,6 +1073,9 @@
             const experience = document.getElementById('experience').value;
             const location = document.getElementById('location').value.trim();
             const availability = document.getElementById('availability').value;
+            
+            // Get qualifications
+            const qualifications = getQualifications();
             
             // Create submission object
             const submission = {
@@ -970,7 +1088,7 @@
                 experience: experience || 'Not specified',
                 location: location || 'Not specified',
                 availability: availability || 'Not specified',
-                feedback,
+                qualifications: qualifications.length > 0 ? qualifications : 'None provided',
                 date: new Date().toLocaleString(),
                 timestamp: new Date().getTime()
             };
@@ -994,6 +1112,7 @@
                 // Reset form after delay
                 setTimeout(() => {
                     document.getElementById('dataForm').reset();
+                    document.getElementById('qualifications-container').innerHTML = '';
                     document.getElementById('dataForm').style.display = 'block';
                     document.getElementById('confirmation').style.display = 'none';
                 }, 5000);
@@ -1043,7 +1162,7 @@
             
             // Update stats
             document.getElementById('totalSubmissions').textContent = submissions.length;
-            document.getElementById('cleaningRequests').textContent = submissions.filter(s => s.service === 'cleaning').length;
+            document.getElementById('cleaningRequests').textContent = submissions.filter(s => s.service === 'maid' || s.service === 'home guard').length;
             document.getElementById('careRequests').textContent = submissions.filter(s => s.service === 'childcare' || s.service === 'eldercare').length;
             
             if (submissions.length === 0) {
@@ -1168,9 +1287,17 @@
             }
             
             // Create CSV content
-            let csvContent = "Name,Phone,Email,Age,Gender,Service,Experience,Location,Availability,Information,Date\n";
+            let csvContent = "Name,Phone,Email,Age,Gender,Service,Experience,Location,Availability,Qualifications,Date\n";
             
             submissions.forEach(sub => {
+                // Format qualifications for CSV
+                let qualificationsText = "None";
+                if (sub.qualifications && sub.qualifications !== 'None provided') {
+                    qualificationsText = sub.qualifications.map(q => 
+                        `${q.name} (${q.organization}, ${q.year})`
+                    ).join('; ');
+                }
+                
                 const row = [
                     `"${sub.name}"`,
                     `"${sub.phone}"`,
@@ -1181,7 +1308,7 @@
                     `"${sub.experience}"`,
                     `"${sub.location}"`,
                     `"${sub.availability}"`,
-                    `"${sub.feedback.replace(/"/g, '""')}"`,
+                    `"${qualificationsText.replace(/"/g, '""')}"`,
                     `"${sub.date}"`
                 ];
                 csvContent += row.join(',') + '\n';
@@ -1276,7 +1403,4 @@
         };
     </script>
 </body>
-
 </html>
-
-
